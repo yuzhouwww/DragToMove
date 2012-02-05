@@ -1,0 +1,43 @@
+@CHARSET "utf-8";
+
+#div1{
+	position:absolute;
+	top:80px;
+	left:56px;
+	width:437px;
+	height:323px;
+	background:yellow;
+}
+
+#div2{
+	position:absolute;
+	top:40px;
+	left:120px;
+	width:437px;
+	height:323px;
+	background:red;
+}
+
+#div3{
+	position:absolute;
+	top:156px;
+	left:84px;
+	width:437px;
+	height:323px;
+	background:black;
+}
+
+.animatonA{
+	-webkit-animation-fill-mode:forwards;
+	-webkit-animation-duration:.5s;
+	-webkit-animation-name:animation1;
+}
+
+@-webkit-keyframes animaton1{
+	0%{
+	}
+	100%{
+		-webkit-transform: translate(50px,50px);
+	}
+}
+
