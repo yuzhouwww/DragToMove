@@ -4,9 +4,9 @@ var lastTouch = new Array(2);
 var lastDelta = new Array(2);
 var isTouchDown;
 var zIndex = 0;
-var lastLocation1 = new Array(0,0);//[0,0]
+var lastLocation1 = new Array(0,0);
 var lastLocation2 = new Array(0,0);
-var lastLocation3 = new Array(0,0);//{name:'zhangsan','age':23}
+var lastLocation3 = new Array(0,0);
 
 function initAll() {
 	var that = $('.colorBlock');
@@ -27,7 +27,7 @@ function initAll() {
 		}
 		//console.log(evt.originalEvent.touches[0].clientX,evt.originalEvent.touches[0].clientY);
 		translate(targetBlock,evt.originalEvent.touches[0].pageX,evt.originalEvent.touches[0].pageY);
-	});`
+	});
 	
 	that.on('touchend',function(evt){
 		isTouchDown = false;
