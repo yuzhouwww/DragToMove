@@ -3,6 +3,7 @@ window.onload = initAll;
 var lastTouch = new Array(2);
 var lastDelta = new Array(2);
 var isTouchDown;
+var didMove;
 var zIndex = 0;
 var lastLocation1 = new Array(0,0);
 var lastLocation2 = new Array(0,0);
@@ -22,18 +23,18 @@ function initAll() {
 	
 	that.on('touchmove',function(evt){
 		targetBlock = evt.target;
-		if(!isTouchDown){
-			return;
-		}
-		//console.log(evt.originalEvent.touches[0].clientX,evt.originalEvent.touches[0].clientY);
+		isTouchDown = false;
 		translate(targetBlock,evt.originalEvent.touches[0].pageX,evt.originalEvent.touches[0].pageY);
         return false;
 	});
 	
 	that.on('touchend',function(evt){
-		isTouchDown = false;
 		targetBlock = evt.target;
-		switch(targetBlock.id){
+        if(isTouchDown){
+            
+        }
+        else{
+            switch(targetBlock.id){
 			case 'div1':
 				lastLocation1 = lastDelta;
 				break;
@@ -44,8 +45,8 @@ function initAll() {
 				lastLocation3 = lastDelta;
 				break;
 			default:
-		}
-		
+            }
+        }
 	});
 }
 

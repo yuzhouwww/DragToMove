@@ -17,8 +17,8 @@ body{
 	position:absolute;
 	top:80px;
 	left:56px;
-	width:437px;
-	height:323px;
+	width:320px;
+	height:240px;
 	background:yellow;
 }
 
@@ -26,8 +26,8 @@ body{
 	position:absolute;
 	top:40px;
 	left:120px;
-	width:437px;
-	height:323px;
+	width:320px;
+	height:240px;
 	background:red;
 }
 
@@ -35,7 +35,7 @@ body{
 	position:absolute;
 	top:156px;
 	left:84px;
-	width:437px;
-	height:323px;
+	width:320px;
+	height:240px;
 	background:black;
 }
