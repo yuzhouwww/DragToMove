@@ -1,5 +1,9 @@
 @CHARSET "utf-8";
 
+body{
+	margin: 0px;
+}
+
 #div1{
 	position:absolute;
 	top:80px;
