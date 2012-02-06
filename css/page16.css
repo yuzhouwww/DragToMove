@@ -38,10 +38,6 @@
 
 @-webkit-keyframes full{
     from{}
-    50%{
-        top:0;
-        left:0;
-    }
     to{
         top:0;
         left:0;
