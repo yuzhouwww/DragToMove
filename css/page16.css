@@ -1,11 +1,5 @@
 @CHARSET "utf-8";
 
-body{
-    height: 500px;
-	width: 1024px;
-	overflow: hidden;
-}
-
 #div1{
 	position:absolute;
 	top:80px;
