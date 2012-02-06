@@ -31,7 +31,8 @@ function initAll() {
 	that.on('touchend',function(evt){
 		targetBlock = evt.target;
         if(isTouchDown){
-            
+            $(targetBlock).addClass('fullScreen');
+            //$(targetBlock).removeClass('fullScreen');
         }
         else{
             switch(targetBlock.id){

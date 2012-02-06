@@ -1,15 +1,11 @@
 @CHARSET "utf-8";
 
-body{
-	margin:100px;
-}
-
 #div0{
 	position:absolute;
 	top:0px;
 	left:0px;
 	width:1024px;
-	height:672px;
+	height:768px;
 	background:gray;
 }
 
@@ -38,4 +34,23 @@ body{
 	width:320px;
 	height:240px;
 	background:black;
+}
+
+@-webkit-keyframes full{
+    from{}
+    50%{
+        top:0;
+        left:0;
+    }
+    to{
+        top:0;
+        left:0;
+        width:1024px;
+        height:672px;
+    }
+}
+
+.fullScreen{
+    -webkit-animation:full 0.5s ease-in-out 0 1 normal;
+    -webkit-animation-fill-mode:forwards;
 }
