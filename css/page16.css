@@ -26,18 +26,3 @@
 	height:323px;
 	background:black;
 }
-
-.animatonA{
-	-webkit-animation-fill-mode:forwards;
-	-webkit-animation-duration:.5s;
-	-webkit-animation-name:animation1;
-}
-
-@-webkit-keyframes animaton1{
-	0%{
-	}
-	100%{
-		-webkit-transform: translate(50px,50px);
-	}
-}
-
