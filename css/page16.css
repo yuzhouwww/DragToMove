@@ -1,7 +1,7 @@
 @CHARSET "utf-8";
 
 body{
-	margin: 100px;
+	overflow: hidden;
 }
 
 #div1{
