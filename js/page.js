@@ -27,6 +27,7 @@ function initAll() {
 		}
 		//console.log(evt.originalEvent.touches[0].clientX,evt.originalEvent.touches[0].clientY);
 		translate(targetBlock,evt.originalEvent.touches[0].pageX,evt.originalEvent.touches[0].pageY);
+        return false;
 	});
 	
 	that.on('touchend',function(evt){
