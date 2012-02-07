@@ -37,7 +37,10 @@
 }
 
 @-webkit-keyframes full{
-    from{-webkit-transform-origin:0 0;}
+    from{
+        top:
+        -webkit-transform-origin:0 0;
+        }
     30%{
         -webkit-transform-origin:0 0;
         -webkit-transform:rotate(80deg);

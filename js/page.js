@@ -35,18 +35,28 @@ function initAll() {
             //$(targetBlock).removeClass('fullScreen');
         }
         else{
-            switch(targetBlock.id){
-			case 'div1':
-				lastLocation1 = lastDelta;
-				break;
-			case 'div2':
-				lastLocation2 = lastDelta;
-				break;
-			case 'div3':
-				lastLocation3 = lastDelta;
-				break;
-			default:
-            }
+            var left = $(targetBlock).css('left');
+            var top = $(targetBlock).css('top');
+        	var targetLeft = $(targetBlock).position().left;
+        	var targetTop = $(targetBlock).position().top;
+            console.log(left + ' ' + top);
+        	console.log(targetLeft + ' ' + targetTop);
+        	$(targetBlock).css({
+        		'left':targetLeft+'px',
+        		'top':targetTop+'px'
+        	});
+//            switch(targetBlock.id){
+//			case 'div1':
+//				lastLocation1 = lastDelta;
+//				break;
+//			case 'div2':
+//				lastLocation2 = lastDelta;
+//				break;
+//			case 'div3':
+//				lastLocation3 = lastDelta;
+//				break;
+//			default:
+//            }
         }
 	});
 }
@@ -55,21 +65,21 @@ function translate(colorBlock,x,y){
 	var deltaX = x - lastTouch[0];
 	var deltaY = y - lastTouch[1];
 	
-	switch(colorBlock.id){
-	case 'div1':
-		deltaX += lastLocation1[0];
-		deltaY += lastLocation1[1];
-		break;
-	case 'div2':
-		deltaX += lastLocation2[0];
-		deltaY += lastLocation2[1];
-		break;
-	case 'div3':
-		deltaX += lastLocation3[0];
-		deltaY += lastLocation3[1];
-		break;
-	default:
-	}
+//	switch(colorBlock.id){
+//	case 'div1':
+//		deltaX += lastLocation1[0];
+//		deltaY += lastLocation1[1];
+//		break;
+//	case 'div2':
+//		deltaX += lastLocation2[0];
+//		deltaY += lastLocation2[1];
+//		break;
+//	case 'div3':
+//		deltaX += lastLocation3[0];
+//		deltaY += lastLocation3[1];
+//		break;
+//	default:
+//	}
 	
 	$(colorBlock).css('-webkit-transform','translate('+deltaX+'px,'+deltaY+'px)');
 	
