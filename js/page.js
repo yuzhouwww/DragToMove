@@ -35,16 +35,22 @@ function initAll() {
             //$(targetBlock).removeClass('fullScreen');
         }
         else{
-            var left = $(targetBlock).css('left');
-            var top = $(targetBlock).css('top');
         	var targetLeft = $(targetBlock).position().left;
         	var targetTop = $(targetBlock).position().top;
-            console.log(left + ' ' + top);
         	console.log(targetLeft + ' ' + targetTop);
-        	$(targetBlock).css({
-        		'left':targetLeft+'px',
-        		'top':targetTop+'px'
+        	
+            var left = $(targetBlock).css('left');
+            var top = $(targetBlock).css('top');
+            console.log(left + ' ' + top);
+            
+            $(targetBlock).css({
+        		'left':parseInt(left) + lastDelta[0] +'px',
+        		'top':parseInt(top) + lastDelta[1] +'px'
         	});
+            
+            var left = $(targetBlock).css('left');
+            var top = $(targetBlock).css('top');
+            console.log(left + ' ' + top);
 //            switch(targetBlock.id){
 //			case 'div1':
 //				lastLocation1 = lastDelta;
