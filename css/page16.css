@@ -37,12 +37,22 @@
 }
 
 @-webkit-keyframes full{
-    from{}
+    from{-webkit-transform-origin:0 0;}
+    30%{
+        -webkit-transform-origin:0 0;
+        -webkit-transform:rotate(80deg);
+    }
+    60%{
+        -webkit-transform-origin:0 0;
+        -webkit-transform:rotate(50deg);
+    }
+    90%{
+        -webkit-transform-origin:0 0;
+        -webkit-transform:rotate(60deg);
+    }
     to{
-        top:0;
-        left:0;
-        width:1024px;
-        height:672px;
+        -webkit-transform-origin:0 0;
+        -webkit-transform:rotate(55deg);
     }
 }
 
