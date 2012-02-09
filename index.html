@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drag and Move</title>
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="no">
+<meta name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent">
+<script src="jquery-1.7.1.js"></script>
+<style type="text/css">
+body {
+	margin: 0px;
+}
+
+#app {
+	height: 768px;
+	width: 1024px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+#imageContainer {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1024px;
+	height: 768px;
+	background: gray;
+}
+
+#imageContainer img:nth-child(1) {
+	position: absolute;
+	top: 80px;
+	left: 56px;
+	width: 320px;
+	height: 240px;
+	background: yellow;
+}
+
+#imageContainer img:nth-child(2) {
+	position: absolute;
+	top: 40px;
+	left: 120px;
+	width: 320px;
+	height: 240px;
+	background: red;
+}
+
+#imageContainer img:nth-child(3) {
+	position: absolute;
+	top: 156px;
+	left: 200px;
+	width: 320px;
+	height: 240px;
+	background: black;
+}
+
+@-webkit-keyframes full{
+    from{
+        -webkit-transform-origin:center center;
+        }
+    50%{
+        -webkit-transform-origin:center center;
+        -webkit-transform:perspective(1550px) rotate3d(1,0,0,180deg);
+    }
+    to{
+        -webkit-transform-origin:center center;
+        -webkit-transform:perspective(1550px) rotate3d(0,0,1,180deg);
+    }
+}
+
+.fullScreen{
+    -webkit-animation:full 2s linear 0 1 normal;
+    -webkit-animation-fill-mode:forwards;
+}
+</style>
+</head>
+<body>
+	<div id='app'>
+		<div id="imageContainer">
+			<img src="1.jpeg" /> <img src="2.jpeg" /> <img src="3.jpeg" />
+		</div>
+	</div>
+	<script>
+		function createDragAndMoveElement(element){
+        
+			$(element).on('touchstart',function(e){
+				$(element).css('z-index',$('#imageContainer')[0].zIndex++);
+				//element.last={'x':e.originalEvent.touches[0].pageX,
+				//			  'y':e.originalEvent.touches[0].pageY};
+				//element.position=element.position||{'x':0,'y':0};
+				return false;
+			});
+			
+			$(element).on('touchmove',function(e){
+				if(!element.gesturestart){
+					element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
+					element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
+					$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
+					
+					element.last={'x':e.originalEvent.touches[0].pageX,
+							  'y':e.originalEvent.touches[0].pageY};
+				}
+				else{
+					console.log(e.originalEvent.changedTouches.length+' touch move');
+					if(e.originalEvent.changedTouches.length == 2){
+						var firstTouch = e.originalEvent.changedTouches[0];
+						var secondTouch = e.originalEvent.changedTouches[1];
+						var position = $(element).position();
+						element.center = {
+								'x':(firstTouch.clientX + secondTouch.clientX)*0.5,
+								'y':(firstTouch.clientY + secondTouch.clientY)*0.5
+									};
+						console.log('position:'+position.left +' '+position.top);
+						$(element).css({
+							'-webkit-transform-origin':(element.center.x-position.left) + 'px' + ' ' + (element.center.x-position.top) + 'px',
+ 							//'-webkit-transform-origin':50+'px '+50+'px',
+							'-webkit-transform':'translate3d(0,0,0) rotate('+element.rotation+'deg)'
+						});
+					}
+				}
+			});
+			
+			$(element).on('touchend',function(e){
+				console.log('>>end');
+                //$(element).addClass('fullScreen');
+			});
+        
+        
+        	$(element).on('gesturestart gesturechange gestureend',function(e){
+			if(e.type=='gesturestart'){
+				console.log('gesture start.');
+				element.gesturestart=true;
+			}
+			if(e.type=='gesturechange'){
+				console.log('gesture change.');
+				element.scale = e.originalEvent.scale;
+				element.rotation = e.originalEvent.rotation;
+				//$(element).css({
+					//'-webkit-transform-origin':((firstTouch.clientX + secondTouch.clientX)*0.5 - position.left) + 'px' + ' ' + ((firstTouch.clientY + secondTouch.clientY)*0.5 - position.top) + 'px',
+					//'-webkit-transform-origin':'center center',
+					//'-webkit-transform':'translate3d(0,0,0) scale('+e.originalEvent.scale+') rotate('+e.originalEvent.rotation+'deg)'
+				//});
+			}
+			if(e.type=='gestureend'){
+				console.log('gesture end.');
+				element.gesturestart=false;
+			}
+		});
+            
+			//console.log('>>>>>create element.');
+		}
+		
+		var elements=$('#imageContainer').children('img');
+		$.each(elements,function(){
+			createDragAndMoveElement(this);
+		});
+		$('#imageContainer')[0].zIndex=1;
+	</script>
+</body>
+</html>
