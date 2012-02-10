@@ -107,8 +107,8 @@ body {
 					console.log(e.originalEvent.changedTouches.length+' touch move');
 					console.log('all touch: '+e.originalEvent.touches.length);
 					if(e.originalEvent.changedTouches.length >= 1){
-						var firstTouch = e.originalEvent.changees[0];
-						var secondTouch = e.originalEvent.changees[1];
+						var firstTouch = e.originalEvent.touches[0];
+						var secondTouch = e.originalEvent.touches[1];
 						var position = $(element).position();
 						if(!element.center){
 							element.center = {
@@ -161,7 +161,7 @@ body {
 					element.rotation='';
 					element.center='';
 					$(element).css({
-						'-webkit-box-shadow':'',
+						'-webkit-box-shadow':'30px 30px 20px rgba(0, 0, 0, 0)',
 						'-webkit-transform':'translate3d(0,0,0) scale(1) rotate(0)',
 						'-webkit-transition-duration':'0.5s'
 					});
