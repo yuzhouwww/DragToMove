@@ -108,15 +108,18 @@ body {
 						var firstTouch = e.originalEvent.changedTouches[0];
 						var secondTouch = e.originalEvent.changedTouches[1];
 						var position = $(element).position();
-						element.center = {
-								'x':(firstTouch.clientX + secondTouch.clientX)*0.5,
-								'y':(firstTouch.clientY + secondTouch.clientY)*0.5
-									};
-						console.log('position:'+position.left +' '+position.top);
+						if(!element.center){
+							element.center = {
+									'x':(firstTouch.clientX + secondTouch.clientX)*0.5,
+									'y':(firstTouch.clientY + secondTouch.clientY)*0.5
+										};
+							//console.log('position:'+position.left +' '+position.top);
+						}
+						console.log((element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px');
 						$(element).css({
-							'-webkit-transform-origin':(element.center.x-position.left) + 'px' + ' ' + (element.center.x-position.top) + 'px',
- 							//'-webkit-transform-origin':50+'px '+50+'px',
-							'-webkit-transform':'translate3d(0,0,0) rotate('+element.rotation+'deg)'
+							'-webkit-transform-origin':(element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px',
+ 							//'-webkit-transform-origin':'center center',
+							'-webkit-transform':'translate3d(0,0,0) rotate('+element.rotation+'deg) scale('+element.scale+')'
 						});
 					}
 				}
@@ -134,7 +137,7 @@ body {
 				element.gesturestart=true;
 			}
 			if(e.type=='gesturechange'){
-				console.log('gesture change.');
+				//console.log('gesture change.');
 				element.scale = e.originalEvent.scale;
 				element.rotation = e.originalEvent.rotation;
 				//$(element).css({
