@@ -95,7 +95,7 @@ body {
 			
 			$(element).on('touchmove',function(e){
 				if(!element.gesturestart){
-					console.log('touch move');
+					//console.log('touch move');
 					element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
 					element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
 					$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
@@ -104,7 +104,7 @@ body {
 							  'y':e.originalEvent.touches[0].pageY};
 				}
 				else{
-					console.log(e.originalEvent.changedTouches.length+' touch move');
+					//console.log(e.originalEvent.changedTouches.length+' touch move');
 					if(e.originalEvent.changedTouches.length == 2){
 						var firstTouch = e.originalEvent.changedTouches[0];
 						var secondTouch = e.originalEvent.changedTouches[1];
@@ -116,7 +116,7 @@ body {
 										};
 							//console.log('position:'+position.left +' '+position.top);
 						}
-						console.log((element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px');
+						//console.log((element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px');
 						$(element).css({
 							'-webkit-transform-origin':(element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px',
  							//'-webkit-transform-origin':'center center',
@@ -127,14 +127,14 @@ body {
 			});
 			
 			$(element).on('touchend',function(e){
-				console.log('>>end');
+				//console.log('>>end');
                 //$(element).addClass('fullScreen');
 			});
         
         
         	$(element).on('gesturestart gesturechange gestureend',function(e){
 			if(e.type=='gesturestart'){
-				console.log('gesture start.');
+				//console.log('gesture start.');
 				element.gesturestart=true;
 			}
 			if(e.type=='gesturechange'){
@@ -143,11 +143,13 @@ body {
 				element.rotation = e.originalEvent.rotation;
 			}
 			if(e.type=='gestureend'){
-				console.log('gesture end.');
+				//console.log('gesture end.');
 				element.gesturestart=false;
+				element.scale='';
+				element.rotation='';
 				element.center='';
 				$(element).css({
-					'-webkit-transform':'translate3d(0,0,0)',
+					'-webkit-transform':'translate3d(0,0,0) scale(1) rotate(0)',
 					'-webkit-transition-duration':'0.5s'
 				});
 			}
