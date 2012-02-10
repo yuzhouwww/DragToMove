@@ -147,7 +147,7 @@ body {
 				}
 				if(e.type=='gesturechange'){
 					//console.log('gesture change.');
-					element.scale = e.originalEvent.scale;
+					element.scale = 1+(e.originalEvent.scale-1)*0.5;
 					element.rotation = e.originalEvent.rotation;
 				}
 				if(e.type=='gestureend'){
@@ -168,8 +168,6 @@ body {
 					'-webkit-transition-duration':'0'
 				});
         	});
-            
-			//console.log('>>>>>create element.');
 		}
 		
 		var elements=$('#imageContainer').children('img');
