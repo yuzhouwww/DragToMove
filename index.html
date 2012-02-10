@@ -96,12 +96,12 @@ body {
 			$(element).on('touchmove',function(e){
 				if(!element.gesturestart){
 					//console.log('touch move');
-					element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
-					element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
-					$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
+					//element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
+					//element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
+					//$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
 					
-					element.last={'x':e.originalEvent.touches[0].pageX,
-							  'y':e.originalEvent.touches[0].pageY};
+					//element.last={'x':e.originalEvent.touches[0].pageX,
+					//		  'y':e.originalEvent.touches[0].pageY};
 				}
 				else{
 					console.log(e.originalEvent.changedTouches.length+' touch move');
