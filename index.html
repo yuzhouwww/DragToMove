@@ -95,6 +95,7 @@ body {
 			
 			$(element).on('touchmove',function(e){
 				if(!element.gesturestart){
+					console.log('touch move');
 					element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
 					element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
 					$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
@@ -140,16 +141,15 @@ body {
 				//console.log('gesture change.');
 				element.scale = e.originalEvent.scale;
 				element.rotation = e.originalEvent.rotation;
-				//$(element).css({
-					//'-webkit-transform-origin':((firstTouch.clientX + secondTouch.clientX)*0.5 - position.left) + 'px' + ' ' + ((firstTouch.clientY + secondTouch.clientY)*0.5 - position.top) + 'px',
-					//'-webkit-transform-origin':'center center',
-					//'-webkit-transform':'translate3d(0,0,0) scale('+e.originalEvent.scale+') rotate('+e.originalEvent.rotation+'deg)'
-				//});
 			}
 			if(e.type=='gestureend'){
 				console.log('gesture end.');
 				element.gesturestart=false;
 				element.center='';
+				$(element).css({
+					'-webkit-transform':'translate3d(0,0,0)',
+					'-webkit-transition-duration':'0.5s'
+				});
 			}
 		});
             
