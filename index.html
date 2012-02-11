@@ -112,7 +112,7 @@ body {
                     var top = parseInt($(element).css('top'));
                     $(element).css({
                         '-webkit-transform-origin':(element.center.x-left) + 'px' + ' ' + (element.center.y-top) + 'px',
-                        '-webkit-transform':'translate3d('+deltaX+','+deltaY+',0) rotate('+element.rotation+'deg) scale('+element.scale+')'
+                        '-webkit-transform':'perspective(1200px) translate3d('+deltaX+','+deltaY+',0) rotate3d(1,1,1,'+element.rotation+'deg) scale('+element.scale+')'
                     });
 				}
 			});
