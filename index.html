@@ -88,32 +88,32 @@ body {
 				else{
 					console.log(e.originalEvent.changedTouches.length+' touch move');
 					console.log('all touch: '+e.originalEvent.touches.length);
-					if(e.originalEvent.changedTouches.length > 1){
-						var firstTouch = e.originalEvent.changedTouches[0];
-						var secondTouch = e.originalEvent.changedTouches[1];
-						var position = $(element).position();
-						if(!element.center){
-							element.center = {
-									'x':(firstTouch.clientX + secondTouch.clientX)*0.5,
-									'y':(firstTouch.clientY + secondTouch.clientY)*0.5
-										};
-							//console.log('position:'+position.left +' '+position.top);
-						}
-						else{
-							element.translate = {
-									'x':(firstTouch.clientX + secondTouch.clientX)*0.5-element.center.x,
-									'y':(firstTouch.clientY + secondTouch.clientY)*0.5-element.center.y
-							};
-						}
-						//console.log((element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px');
-						var deltaX = element.translate ? element.translate.x+'px' : 0;
-						var deltaY = element.translate ? element.translate.y+'px' : 0;
-						$(element).css({
-							'-webkit-transform-origin':(element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px',
- 							//'-webkit-transform-origin':'center center',
-							'-webkit-transform':'translate3d('+deltaX+','+deltaY+',0) rotate('+element.rotation+'deg) scale('+element.scale+')'
-						});
-					}
+					
+                    var firstTouch = e.originalEvent.changedTouches[0];
+                    var secondTouch = e.originalEvent.changedTouches[1];
+                    var position = $(element).position();
+                    if(!element.center){
+                        element.center = {
+                            'x':(firstTouch.clientX + secondTouch.clientX)*0.5,
+                            'y':(firstTouch.clientY + secondTouch.clientY)*0.5
+                        };
+                        //console.log('position:'+position.left +' '+position.top);
+                    }
+                    else{
+                        element.translate = {
+                            'x':(firstTouch.clientX + secondTouch.clientX)*0.5-element.center.x,
+                            'y':(firstTouch.clientY + secondTouch.clientY)*0.5-element.center.y
+                        };
+                    }
+                    //console.log((element.center.x-parseInt($(element).css('left'))) + 'px' + ' ' + (element.center.y-parseInt($(element).css('top'))) + 'px');
+                    var deltaX = element.translate ? element.translate.x+'px' : 0;
+                    var deltaY = element.translate ? element.translate.y+'px' : 0;
+                    var left = parseInt($(element).css('left'));
+                    var top = parseInt($(element).css('top'));
+                    $(element).css({
+                        '-webkit-transform-origin':(element.center.x-left) + 'px' + ' ' + (element.center.y-top) + 'px',
+                        '-webkit-transform':'translate3d('+deltaX+','+deltaY+',0) rotate('+element.rotation+'deg) scale('+element.scale+')'
+                    });
 				}
 			});
 			
