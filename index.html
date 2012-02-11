@@ -56,24 +56,6 @@ body {
 	background: black;
 }
 
-@-webkit-keyframes full{
-    from{
-        -webkit-transform-origin:center center;
-        }
-    50%{
-        -webkit-transform-origin:center center;
-        -webkit-transform:perspective(1550px) rotate3d(1,0,0,180deg);
-    }
-    to{
-        -webkit-transform-origin:center center;
-        -webkit-transform:perspective(1550px) rotate3d(0,0,1,180deg);
-    }
-}
-
-.fullScreen{
-    -webkit-animation:full 2s linear 0 1 normal;
-    -webkit-animation-fill-mode:forwards;
-}
 </style>
 </head>
 <body>
@@ -107,8 +89,8 @@ body {
 					console.log(e.originalEvent.changedTouches.length+' touch move');
 					console.log('all touch: '+e.originalEvent.touches.length);
 					if(e.originalEvent.changedTouches.length >= 1){
-						var firstTouch = e.originalEvent.touches[0];
-						var secondTouch = e.originalEvent.touches[1];
+						var firstTouch = e.originalEvent.changedTouches[0];
+						var secondTouch = e.originalEvent.changedTouches[1];
 						var position = $(element).position();
 						if(!element.center){
 							element.center = {
