@@ -89,8 +89,8 @@ body {
 					console.log(e.originalEvent.changedTouches.length+' touch move');
 					console.log('all touch: '+e.originalEvent.touches.length);
 					
-                    var firstTouch = e.originalEvent.changedTouches[0];
-                    var secondTouch = e.originalEvent.changedTouches[1];
+                    var firstTouch = e.originalEvent.touches[0];
+                    var secondTouch = e.originalEvent.touches[1];
                     var position = $(element).position();
                     if(!element.center){
                         element.center = {
