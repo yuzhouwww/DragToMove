@@ -112,7 +112,7 @@ body {
                     var top = parseInt($(element).css('top'));
                     $(element).css({
                         '-webkit-transform-origin':(element.center.x-left) + 'px' + ' ' + (element.center.y-top) + 'px',
-                        '-webkit-transform':'perspective(1200px) translate3d('+deltaX+','+deltaY+',0) rotate3d(1,1,1,'+element.rotation+'deg) scale('+element.scale+')'
+                        '-webkit-transform':'perspective(1200px) translate3d('+deltaX+','+deltaY+',0) rotateZ('+element.rotation+'deg) rotateX(15deg) rotateY(0deg) scale('+element.scale+')'
                     });
 				}
 			});
@@ -143,7 +143,7 @@ body {
 					element.rotation='';
 					element.center='';
 					$(element).css({
-						'-webkit-box-shadow':'30px 30px 20px rgba(0, 0, 0, 0)',
+						'-webkit-box-shadow':'',
 						'-webkit-transform':'translate3d(0,0,0) scale(1) rotate(0)',
 						'-webkit-transition-duration':'0.5s'
 					});
