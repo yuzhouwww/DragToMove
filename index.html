@@ -66,8 +66,8 @@ body {
 	</div>
 	<script>
 		function createDragAndMoveElement(element){
-        
 			$(element).on('touchstart',function(e){
+                console.log('touchs tart');
 				$(element).css('z-index',$('#imageContainer')[0].zIndex++);
 				//element.last={'x':e.originalEvent.touches[0].pageX,
 				//			  'y':e.originalEvent.touches[0].pageY};
@@ -76,8 +76,8 @@ body {
 			});
 			
 			$(element).on('touchmove',function(e){
+                console.log('touch move');
 				if(!element.gesturestart){
-					//console.log('touch move');
 					//element.position.x=element.position.x+e.originalEvent.touches[0].pageX-element.last.x;
 					//element.position.y=element.position.y+e.originalEvent.touches[0].pageY-element.last.y;
 					//$(element).css('-webkit-transform','translate('+element.position.x+'px,'+element.position.y+'px)');
@@ -86,8 +86,8 @@ body {
 					//		  'y':e.originalEvent.touches[0].pageY};
 				}
 				else{
-					console.log(e.originalEvent.changedTouches.length+' touch move');
-					console.log('all touch: '+e.originalEvent.touches.length);
+					//console.log(e.originalEvent.changedTouches.length+' touch move');
+					//console.log('all touch: '+e.originalEvent.touches.length);
 					
                     var firstTouch = e.originalEvent.touches[0];
                     var secondTouch = e.originalEvent.touches[1];
@@ -118,12 +118,13 @@ body {
 			});
 			
 			$(element).on('touchend',function(e){
-				//console.log('>>end');
+				console.log('touch end');
                 //$(element).addClass('fullScreen');
 			});
         
         
         	$(element).on('gesturestart gesturechange gestureend',function(e){
+                console.log(e.type);
 				if(e.type=='gesturestart'){
 					//console.log('gesture start.');
 					element.gesturestart=true;
