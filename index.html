@@ -68,6 +68,7 @@ body {
 		function createDragAndMoveElement(element){
 			$(element).on('touchstart',function(e){
                 console.log('touchs tart');
+                console.log('all touch: '+e.originalEvent.touches.length);
 				$(element).css('z-index',$('#imageContainer')[0].zIndex++);
 				//element.last={'x':e.originalEvent.touches[0].pageX,
 				//			  'y':e.originalEvent.touches[0].pageY};
@@ -126,19 +127,16 @@ body {
         	$(element).on('gesturestart gesturechange gestureend',function(e){
                 console.log(e.type);
 				if(e.type=='gesturestart'){
-					//console.log('gesture start.');
 					element.gesturestart=true;
 					$(element).css({
 						'-webkit-box-shadow':'30px 30px 20px rgba(0, 0, 0, 0.4)'
 					});
 				}
 				if(e.type=='gesturechange'){
-					//console.log('gesture change.');
 					element.scale = 1+(e.originalEvent.scale-1)*0.5;
 					element.rotation = e.originalEvent.rotation;
 				}
 				if(e.type=='gestureend'){
-					//console.log('gesture end.');
 					element.gesturestart=false;
 					element.scale='';
 					element.rotation='';
